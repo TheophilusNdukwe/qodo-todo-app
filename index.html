@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Qodo Todo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1>Qodo Todo App</h1>
+      <form id="new-todo-form" aria-label="Add new todo" autocomplete="off">
+        <input id="new-todo-input" name="title" type="text" placeholder="What needs to be done?" aria-label="Todo title" />
+        <button type="submit" id="add-todo-btn" aria-label="Add todo">Add</button>
+      </form>
+    </header>
+
+    <main class="app__main">
+      <section class="toolbar" aria-label="Todo controls">
+        <div class="filters" role="tablist" aria-label="Filters">
+          <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter" data-filter="active" role="tab" aria-selected="false">Active</button>
+          <button class="filter" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+        </div>
+        <div class="actions">
+          <button id="clear-completed-btn">Clear completed</button>
+        </div>
+        <div class="status" aria-live="polite">
+          <span id="items-left">0</span> items left
+        </div>
+      </section>
+
+      <ul id="todo-list" class="todo-list" aria-label="To-do list"></ul>
+    </main>
+
+    <footer class="app__footer">
+      <small>LocalStorage powered. Double-click a title to edit. Press Enter to save, Esc to cancel.</small>
+    </footer>
+  </div>
+
+  <template id="todo-item-template">
+    <li class="todo-item" data-id="">
+      <label class="todo-item__checkbox">
+        <input type="checkbox" class="toggle" aria-label="Toggle completed" />
+        <span class="checkmark" aria-hidden="true"></span>
+      </label>
+      <div class="todo-item__title" tabindex="0"></div>
+      <input type="text" class="todo-item__edit" aria-label="Edit title" />
+      <button class="todo-item__delete" aria-label="Delete todo" title="Delete">✕</button>
+    </li>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
